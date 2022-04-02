@@ -15,6 +15,18 @@ function checkMutations(mutations) {
                 for (elt of images) {
                     elt.style["filter"] = "blur(8px)";
                 }
+
+                let videos = document.getElementsByTagName("video");
+                for (elt of videos) {
+                    elt.style["filter"] = "blur(8px)";
+                }
+
+                let divs = document.getElementsByTagName("div");
+                for (elt of divs) {
+                    if (elt.style.backgroundImage) {
+                        elt.style["filter"] = "blur(8px)";
+                    }
+                }
             }
         }
     }
@@ -23,3 +35,4 @@ function checkMutations(mutations) {
 var observer = new MutationObserver(checkMutations);
 
 observer.observe(document, {attributes: false, childList: true, characterData: false, subtree:true});
+
